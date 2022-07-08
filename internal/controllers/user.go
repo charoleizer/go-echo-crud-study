@@ -8,6 +8,7 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Invoke CreateUser interface. Cannot invoke directly by router
 func CreateUser(c echo.Context) error {
 	return handlers.User.CreateUser(c, &models.User{ID: cache.Seq})
 }

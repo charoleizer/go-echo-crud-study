@@ -9,11 +9,12 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
+// Struct to supply interface
 type user struct {
 	*models.User
 }
 
-// Route methods
+// Acessible by routes methods
 type IUser interface {
 	CreateUser(c echo.Context, u *models.User) error
 }
@@ -21,6 +22,7 @@ type IUser interface {
 // Interface object to expose methods
 var User IUser = &user{&models.User{}}
 
+// Create user and return status
 func (h *user) CreateUser(c echo.Context, u *models.User) error {
 	err := c.Bind(u)
 	if err != nil {
